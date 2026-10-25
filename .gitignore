@@ -11,3 +11,6 @@ dataset
 NousResearch/
 Qwen/
 google/
+results/
+*.log
+
