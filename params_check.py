@@ -3,10 +3,12 @@
 Needs internet (downloads ~2GB model weights). Run on Kaggle.
 
 Expected exact counts (paper Table 1: 0.44M / 0.89M / 1.18M / 2.36M):
-    roberta-base   r=8  alpha=16 -> 442368
-    roberta-base   r=16 alpha=32 -> 884736
-    roberta-large  r=8  alpha=16 -> 1179648
-    roberta-large  r=16 alpha=32 -> 2359296
+    roberta-base   r=8  alpha=16 -> 442560
+    roberta-base   r=16 alpha=32 -> 885120
+    roberta-large  r=8  alpha=16 -> 1180032
+    roberta-large  r=16 alpha=32 -> 2360064
+  (lora_A + lora_B + projector = 3*hidden*r per module, plus the nn.RMSNorm
+   elementwise gamma of size r per module; rounds to the paper's reported values.)
 """
 import os
 import sys
