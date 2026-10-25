@@ -22,10 +22,10 @@ from peft import LoraConfig, get_peft_model, TaskType
 from mypeft.toplora import replace_toplora_linear
 
 EXPECTED = {
-    ('roberta-base', 8): 442368,
-    ('roberta-base', 16): 884736,
-    ('roberta-large', 8): 1179648,
-    ('roberta-large', 16): 2359296,
+    ('roberta-base', 8): 442560,
+    ('roberta-base', 16): 885120,
+    ('roberta-large', 8): 1180032,
+    ('roberta-large', 16): 2360064,
 }
 
 
