@@ -34,12 +34,13 @@ def count_lora_params(model):
 def build(model_name, rank):
     model = AutoModelForSequenceClassification.from_pretrained(model_name, num_labels=2)
     peft_config = LoraConfig(
+        task_type=TaskType.SEQ_CLS,
         r=rank,
         lora_alpha=2 * rank,
         target_modules=['query', 'value'],
         lora_dropout=0.05,
     )
-    model = get_peft_model(model, peft_config, task_type=TaskType.SEQ_CLS)
+    model = get_peft_model(model, peft_config)
     replace_toplora_linear(model)
     count = count_lora_params(model)
     del model

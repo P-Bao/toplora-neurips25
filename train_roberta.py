@@ -79,12 +79,13 @@ def main():
 
     lora_cfg = config.lora_config
     peft_config = LoraConfig(
+        task_type=TaskType.SEQ_CLS,
         r=lora_cfg.rank,
         lora_alpha=lora_cfg.lora_alpha,
         target_modules=lora_cfg.target_modules,
         lora_dropout=lora_cfg.lora_dropout,
     )
-    model = get_peft_model(model, peft_config, task_type=TaskType.SEQ_CLS)
+    model = get_peft_model(model, peft_config)
     if lora_cfg.get('use_toplora', False):
         from mypeft.toplora import replace_toplora_linear
         replace_toplora_linear(model)
